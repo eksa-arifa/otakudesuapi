@@ -157,13 +157,23 @@ async function streamNime(url){
     const $ = cheerio.load(data)
 
     const arr = []
+    const download = []
 
     const jdlflm = $('.venser').find('.posttl').text()
     const iframe = $('.responsive-embed-stream').html()
+    
+    $('.venser').find('.download li').each((index, element)=>{
+        $(element).find('a').each((index, element)=>{
+            const el = $(element).html()
+
+            download.push(el)
+        })
+    })
 
     arr.push({
         judul : jdlflm,
-        iframe : iframe
+        iframe : iframe,
+        link : download
     })
 
     let objek = {
