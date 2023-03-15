@@ -204,8 +204,8 @@ const searchNime = async (url)=>{
     $('.chivsrc li').each((index, element)=>{
         const nama = $(element).find('a').first().text()
         const genres = $(element).find('.set').first().text()
-        const status = $(element).find('div:nth-child(2)').text()
-        const rating = $(element).find('div:nth-child(3)').text()
+        const status = $(element).find('div:nth-child(4)').text()
+        const rating = $(element).find('div:nth-child(5)').text()
         let endpoint = $(element).find('a').attr('href')
 
         endpoint = endpoint.split('/')[4]
