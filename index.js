@@ -202,7 +202,7 @@ const searchNime = async (url)=>{
     const arr = []
 
     $('.chivsrc li').each((index, element)=>{
-        const nama = $(element).find('a').text()
+        const nama = $(element).find('a').first().text()
         const genres = $(element).find('.set').first().text()
         const status = $(element).find('.set:nth-child(2)').text()
         const rating = $(element).find('.set:nth-child(3)').text()
