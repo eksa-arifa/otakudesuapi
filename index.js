@@ -45,6 +45,14 @@ app.get('/stream/:namanime', (req, res)=>{
     })
 })
 
+app.get('/search/:nama', (req, res)=>{
+    const url = req.params.nama
+
+    searchNime(url).then(result => {
+        res.send(result)
+    })
+})
+
 
 
 
@@ -183,6 +191,47 @@ async function streamNime(url){
     }
 
     return objek
+}
+
+const searchNime = async (url)=>{
+    const {data} = await axios.get(`https://otakudesu.ltd/?s=${url}&post_type=anime`)
+
+
+    const $ = cheerio.load(data)
+
+    const arr = []
+
+    $('.chivsrc li').each((index, element)=>{
+        const nama = $(element).find('a').text()
+        const genres = $(element).find('.set').first().text()
+        const status = $(element).find('.set:nth-child(2)').text()
+        const rating = $(element).find('.set:nth-child(3)').text()
+        let endpoint = $(element).find('a').attr('href')
+
+        endpoint = endpoint.split('/')[4]
+
+        arr.push({
+            nama : nama,
+            genres : genres,
+            status : status,
+            rating : rating,
+            endpoint : endpoint
+        })
+
+    })
+
+    let objek = {
+        success : true,
+        author : "Eksa Dev",
+        sumber : "https://otakudesu.ltd/",
+        pesan : "Kami mohon izin kepada pihak otakudesu untuk mengambil data dari web kalian",
+        data : {
+            arr
+        }
+    }
+
+    return objek
+
 }
 
 
