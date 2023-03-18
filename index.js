@@ -202,6 +202,7 @@ const searchNime = async (url)=>{
     const arr = []
 
     $('.chivsrc li').each((index, element)=>{
+        const thumb = $(element).find('img').attr("src")
         const nama = $(element).find('a').first().text()
         const genres = $(element).find('.set').first().text()
         const status = $(element).find('div:nth-child(4)').text()
@@ -211,6 +212,7 @@ const searchNime = async (url)=>{
         endpoint = endpoint.split('/')[4]
 
         arr.push({
+            thumb : thumb,
             nama : nama,
             genres : genres,
             status : status,
