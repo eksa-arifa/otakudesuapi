@@ -169,7 +169,7 @@ async function streamNime(url){
     const download = []
 
     const jdlflm = $('.venser').find('.posttl').text()
-    const iframe = $('.responsive-embed-stream').html()
+    const iframe = $('.responsive-embed-stream iframe').attr("src")
     
     const el = $('.venser').find('.download ul').html()
 
