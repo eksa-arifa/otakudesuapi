@@ -54,6 +54,16 @@ app.get('/search/:nama', (req, res)=>{
     })
 })
 
+app.get('/genrelist', (req, res)=>{
+
+
+
+    kategoriList().then(response=>{
+        res.send(response)
+    })
+
+})
+
 
 
 
@@ -235,6 +245,39 @@ const searchNime = async (url)=>{
 
     return objek
 
+}
+
+const kategoriList = async ()=>{
+    const {data} = await axios.get(`https://otakudesu.lol/genre-list/`)
+
+
+    const $ = cheerio.load(data)
+
+    const arr = []
+
+    $('.genres li a').each((index, element)=>{
+        const nama = $(element).text()
+        const endpoint = $(element).attr("href").split('/')[2]
+
+        arr.push({
+            nama : nama,
+            endpoint : endpoint
+        })
+    })
+
+    let objek = {
+        success : true,
+        author : "Eksa Dev",
+        sumber : "https://otakudesu.ltd/",
+        pesan : "Kami mohon izin kepada pihak otakudesu untuk mengambil data dari web kalian",
+        data : {
+            arr
+        }
+    }
+
+    return objek
+
+    
 }
 
 
