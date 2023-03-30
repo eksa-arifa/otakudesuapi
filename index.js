@@ -17,7 +17,8 @@ app.get('/', (req, res)=>{
             Ambil_detail_anime : "/detail/:endpoint",
             Ambil_stream_anime : "/stream/:endpoint",
             Ambil_search_anime : "/search/:namaanime",
-            Ambil_all_kategori_list : "/genrelist"
+            Ambil_all_kategori_list : "/genrelist",
+            Ambil_data_genre : "/genres/:endpoint"
         }
     }
     res.send(keluaran)
@@ -63,6 +64,15 @@ app.get('/genrelist', (req, res)=>{
         res.send(response)
     })
 
+})
+
+app.get('/genres/:nama', (req, res)=>{
+    const nama = req.params.nama
+    
+
+    genres(nama).then(response =>{
+        res.send(response)
+    })
 })
 
 
@@ -283,6 +293,63 @@ const kategoriList = async ()=>{
     return objek
 
     
+}
+
+const genres = async (nama)=>{
+    const {data} = await axios.get(`https://otakudesu.lol/genres/${nama}`)
+
+
+    const $ = cheerio.load(data)
+    const arr = []
+
+    const maximal = $('.pagenavix a:nth-child(6)').text()
+    let i = 1
+
+    while(i <= maximal){
+        const {data} = await axios.get(`https://otakudesu.lol/genres/${nama}/page/${i}`)
+
+
+        const $ = cheerio.load(data)
+
+
+        $('.col-anime-con').each((index, element)=>{
+            const nama = $(element).find('.col-anime .col-anime-title').text()
+            const studio = $(element).find('.col-anime .col-anime-studio').text()
+            const eps = $(element).find('.col-anime .col-anime-eps').text()
+            const rating = $(element).find('.col-anime .col-anime-rating').text()
+            const genre = $(element).find('.col-anime .col-anime-genre').text()
+            const synopsis = $(element).find('.col-anime .col-synopsis').text()
+            const thumb = $(element).find('.col-anime .col-anime-cover img').attr("src")
+            const endpoint = $(element).find('.col-anime .col-anime-title a').attr("href").split('/')[4]
+
+            arr.push({
+                nama : nama,
+                thumb : thumb,
+                studio : studio,
+                eps : eps,
+                rating : rating,
+                genre : genre,
+                synopsis : synopsis,
+                endpoint : endpoint
+            })
+        })
+
+
+
+        i++
+    }
+
+    let objek = {
+        success : true,
+        author : "Eksa Dev",
+        sumber : "https://otakudesu.ltd/",
+        pesan : "Kami mohon izin kepada pihak otakudesu untuk mengambil data dari web kalian",
+        data : {
+            arr
+        }
+    }
+
+    return objek
 }
 
 
