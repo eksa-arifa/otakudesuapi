@@ -16,7 +16,8 @@ app.get('/', (req, res)=>{
             Ambil_anime_terbaru : "/terbaru",
             Ambil_detail_anime : "/detail/:endpoint",
             Ambil_stream_anime : "/stream/:endpoint",
-            Ambil_search_anime : "/search/:namaanime"
+            Ambil_search_anime : "/search/:namaanime",
+            Ambil_all_kategori_list : "/genrelist"
         }
     }
     res.send(keluaran)
