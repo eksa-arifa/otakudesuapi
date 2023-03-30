@@ -86,6 +86,7 @@ async function getDataAnime(){
         endpoint = endpoint.split("/")[4]
 
         arr.push({
+            id : index+1,
             judul : jj,
             hariUp : hariUpload,
             episodeBaru : episodeKe,
@@ -136,6 +137,7 @@ async function getDetailAnime(url){
         endpoint = endpoint.split("/")[4]
 
         arr2.push({
+            id : index + 1,
             title : episod,
             endpoint : endpoint
         })
@@ -223,6 +225,7 @@ const searchNime = async (url)=>{
         endpoint = endpoint.split('/')[4]
 
         arr.push({
+            id : index+1,
             thumb : thumb,
             nama : nama,
             genres : genres,
@@ -260,6 +263,7 @@ const kategoriList = async ()=>{
         const endpoint = $(element).attr("href").split('/')[2]
 
         arr.push({
+            id : index+1,
             nama : nama,
             endpoint : endpoint
         })
