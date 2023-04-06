@@ -302,10 +302,16 @@ const genres = async (nama)=>{
     const $ = cheerio.load(data)
     const arr = []
 
-    const maximal = $('.pagenavix a:nth-child(6)').text()
+    const maximal = []
+
+    $('.pagenavix a').each((index, element)=>{
+        maximal.push($(element).text())
+    })
+
+
     let i = 1
 
-    while(i <= maximal){
+    while(i <= maximal[maximal.length - 2]){
         const {data} = await axios.get(`https://otakudesu.lol/genres/${nama}/page/${i}`)
 
 
