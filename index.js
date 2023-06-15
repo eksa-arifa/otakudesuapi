@@ -63,10 +63,11 @@ app.get("/genrelist", (req, res) => {
   });
 });
 
-app.get("/genres/:nama", (req, res) => {
+app.get("/genres/:nama/page/:hal", (req, res) => {
   const nama = req.params.nama;
+  const hal = req.params.hal;
 
-  genres(nama).then((response) => {
+  genres(nama, hal).then((response) => {
     res.send(response);
   });
 });
@@ -285,8 +286,8 @@ const kategoriList = async () => {
   return objek;
 };
 
-const genres = async (nama) => {
-  const { data } = await axios.get(`https://otakudesu.lol/genres/${nama}`);
+const genres = async (nama, hal) => {
+  const { data } = await axios.get(`https://otakudesu.lol/genres/${nama}/page/${hal}`);
 
   const $ = cheerio.load(data);
   const arr = [];
