@@ -73,7 +73,7 @@ app.get("/genres/:nama/page/:hal", (req, res) => {
 });
 
 async function getDataAnime() {
-  let { data } = await axios.get("https://otakudesu.ltd");
+  let { data } = await axios.get("https://otakudesu.cloud");
 
   const $ = cheerio.load(data);
 
@@ -118,7 +118,7 @@ async function getDataAnime() {
 }
 
 async function getDetailAnime(url) {
-  let { data } = await axios.get("https://otakudesu.ltd/anime/" + url);
+  let { data } = await axios.get("https://otakudesu.cloud/anime/" + url);
 
   const $ = cheerio.load(data);
 
@@ -176,7 +176,7 @@ async function getDetailAnime(url) {
 }
 
 async function streamNime(url) {
-  const { data } = await axios.get("https://otakudesu.ltd/episode/" + url);
+  const { data } = await axios.get("https://otakudesu.cloud/episode/" + url);
 
   const $ = cheerio.load(data);
 
@@ -212,7 +212,7 @@ async function streamNime(url) {
 
 const searchNime = async (url) => {
   const { data } = await axios.get(
-    `https://otakudesu.ltd/?s=${url}&post_type=anime`
+    `https://otakudesu.cloud/?s=${url}&post_type=anime`
   );
 
   const $ = cheerio.load(data);
@@ -255,7 +255,7 @@ const searchNime = async (url) => {
 };
 
 const kategoriList = async () => {
-  const { data } = await axios.get(`https://otakudesu.lol/genre-list/`);
+  const { data } = await axios.get(`https://otakudesu.cloud/genre-list/`);
 
   const $ = cheerio.load(data);
 
@@ -287,7 +287,7 @@ const kategoriList = async () => {
 };
 
 const genres = async (nama, hal) => {
-  const { data } = await axios.get(`https://otakudesu.lol/genres/${nama}/page/${hal}`);
+  const { data } = await axios.get(`https://otakudesu.cloud/genres/${nama}/page/${hal}`);
 
   const $ = cheerio.load(data);
   const arr = [];
