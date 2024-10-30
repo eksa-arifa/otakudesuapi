@@ -126,17 +126,17 @@ async function getDetailAnime(url) {
 
   
   let arr = [];
-  let arr2 = [];
+  // let arr2 = [];
 
-  const fotonime = $(".venser").find(".fotoanime img").attr("src");
-  const judul = $(".venser").find(".infozingle p").first().text();
-  const skor = $(".venser").find(".infozingle p:nth-child(3)").text();
-  const produser = $(".venser").find(".infozingle p:nth-child(4)").text();
-  const status = $(".venser").find(".infozingle p:nth-child(6)").text();
-  const totaleps = $(".venser").find(".infozingle p:nth-child(7)").text();
-  const studio = $(".venser").find(".infozingle p:nth-child(10)").text();
-  const genre = $(".venser").find(".infozingle p:nth-child(11)").text();
-  const sinopsis = $(".venser").find(".sinopc").text();
+  // const fotonime = $(".venser").find(".fotoanime img").attr("src");
+  // const judul = $(".venser").find(".infozingle p").first().text();
+  // const skor = $(".venser").find(".infozingle p:nth-child(3)").text();
+  // const produser = $(".venser").find(".infozingle p:nth-child(4)").text();
+  // const status = $(".venser").find(".infozingle p:nth-child(6)").text();
+  // const totaleps = $(".venser").find(".infozingle p:nth-child(7)").text();
+  // const studio = $(".venser").find(".infozingle p:nth-child(10)").text();
+  // const genre = $(".venser").find(".infozingle p:nth-child(11)").text();
+  // const sinopsis = $(".venser").find(".sinopc").text();
 
   // $(".venser .episodelist ul li").each((index, element) => {
   //   const episod = $(element).find("a").text();
@@ -151,18 +151,18 @@ async function getDetailAnime(url) {
   //   });
   // });
 
-  arr.push({
-    fotonime: fotonime,
-    judul: judul,
-    skor: skor,
-    produser: produser,
-    status: status,
-    totaleps: totaleps,
-    studio: studio,
-    genre: genre,
-    sinopsis: sinopsis,
-    // episodelist: arr2,
-  });
+  // arr.push({
+  //   fotonime: fotonime,
+  //   judul: judul,
+  //   skor: skor,
+  //   produser: produser,
+  //   status: status,
+  //   totaleps: totaleps,
+  //   studio: studio,
+  //   genre: genre,
+  //   sinopsis: sinopsis,
+  //   // episodelist: arr2,
+  // });
 
   let objek = {
     success: true,
