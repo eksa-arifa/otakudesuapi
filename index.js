@@ -138,18 +138,18 @@ async function getDetailAnime(url) {
   const genre = $(".venser").find(".infozingle p:nth-child(11)").text();
   const sinopsis = $(".venser").find(".sinopc").text();
 
-  $(".venser .episodelist ul li").each((index, element) => {
-    const episod = $(element).find("a").text();
-    let endpoint = $(element).find("a").attr("href");
+  // $(".venser .episodelist ul li").each((index, element) => {
+  //   const episod = $(element).find("a").text();
+  //   let endpoint = $(element).find("a").attr("href");
 
-    endpoint = endpoint.split("/")[4];
+  //   endpoint = endpoint.split("/")[4];
 
-    arr2.push({
-      id: index + 1,
-      title: episod,
-      endpoint: endpoint,
-    });
-  });
+  //   arr2.push({
+  //     id: index + 1,
+  //     title: episod,
+  //     endpoint: endpoint,
+  //   });
+  // });
 
   arr.push({
     fotonime: fotonime,
@@ -161,7 +161,7 @@ async function getDetailAnime(url) {
     studio: studio,
     genre: genre,
     sinopsis: sinopsis,
-    episodelist: arr2,
+    // episodelist: arr2,
   });
 
   let objek = {
