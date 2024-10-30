@@ -33,10 +33,10 @@ app.get("/terbaru", (req, res) => {
   });
 });
 
-app.get("/detail/:nama", (req, res) => {
+app.get("/anime/:namanime", (req, res) => {
   res.type('json')
 
-  const url = req.params.nama;
+  const url = req.params.namanime;
 
   getDetailAnime(url).then((result) => {
     res.send(result);
