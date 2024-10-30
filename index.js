@@ -120,7 +120,7 @@ async function getDataAnime() {
 }
 
 async function getDetailAnime(url) {
-  let { data } = await axios.get(`https://otakudesu.cloud/anime/${url}`);
+  let { data } = await axios.get(`https://otakudesu.cloud/anime/${url}/`);
 
   // const $ = cheerio.load(data);
 
