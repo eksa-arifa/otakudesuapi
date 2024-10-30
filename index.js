@@ -34,6 +34,8 @@ app.get("/terbaru", (req, res) => {
 });
 
 app.get("/detail/:nama", (req, res) => {
+  res.type('json')
+
   const url = req.params.nama;
 
   getDetailAnime(url).then((result) => {
@@ -122,6 +124,7 @@ async function getDetailAnime(url) {
 
   const $ = cheerio.load(data);
 
+  
   let arr = [];
   let arr2 = [];
 
